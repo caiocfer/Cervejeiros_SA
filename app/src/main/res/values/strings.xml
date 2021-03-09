@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cervejeiros_SA</string>
+    <string name="favorites">Favorites</string>
+    <string name="home">Home</string>
+    <string name="beer_name">Beer Name</string>
+    <string name="description">Description</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
