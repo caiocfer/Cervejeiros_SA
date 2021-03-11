@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background"
+    android:orientation="vertical"
     tools:context=".fragment.HomeFragment">
+
+    <SearchView
+        android:id="@+id/searchBeer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_beer_list"
+        android:queryHint="Search beer..."
+        android:elevation="3dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerBeerList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</FrameLayout>
+</LinearLayout>

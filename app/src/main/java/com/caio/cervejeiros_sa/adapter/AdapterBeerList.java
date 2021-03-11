@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,9 +19,10 @@ import com.caio.cervejeiros_sa.model.Beer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerListViewHolder> {
+public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerListViewHolder>{
 
     private List<Beer> beerList;
+    private List<Beer> filteredBeerList;
     private Context context;
     private OnBeerListener mOnBeerListener;
 
@@ -28,6 +31,8 @@ public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerLi
         this.context = context;
         this.mOnBeerListener = onBeerListener;
     }
+
+
 
     @NonNull
     @Override
@@ -51,6 +56,7 @@ public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerLi
     public int getItemCount() {
         return beerList.size();
     }
+
 
 
     public class BeerListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
