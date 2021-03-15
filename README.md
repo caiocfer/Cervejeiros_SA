@@ -11,7 +11,7 @@ A beer showcase app developed using Java,Retrofit and the PUNK API
 
 ## TODO:
 - [ ] Favorite List
-- [ ] Infinite Scroll
+- [X] Infinite Scroll
 - [X] Search System
 
 
