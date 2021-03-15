@@ -11,7 +11,11 @@ import retrofit2.http.Query;
 public interface BeerService {
 
     @GET("beers")
-    Call<List<Beer>> getBeer();
+    Call<List<Beer>> getBeer(
+            @Query("page") int pageNumber
+    );
+
+
 
     @GET("beers")
     Call<List<Beer>> getBeerSearch(

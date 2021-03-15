@@ -1,23 +1,27 @@
 package com.caio.cervejeiros_sa.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Beer implements Serializable {
     private String id;
     private String name;
     private String tagline;
-    private String first_brewed;
     private String description;
     private String image_url;
     private BeerIngredients ingredients;
+    private boolean favorite=false;
 
 
     public Beer(){
     }
 
+    public boolean isFavorite() {
+        return favorite;
+    }
 
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
 
     public String getId() {
         return id;
@@ -41,14 +45,6 @@ public class Beer implements Serializable {
 
     public void setTagline(String tagline) {
         this.tagline = tagline;
-    }
-
-    public String getFirst_brewed() {
-        return first_brewed;
-    }
-
-    public void setFirst_brewed(String first_brewed) {
-        this.first_brewed = first_brewed;
     }
 
     public String getDescription() {

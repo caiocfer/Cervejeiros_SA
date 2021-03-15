@@ -47,8 +47,11 @@ public class BeerDetailsActivity extends AppCompatActivity {
             selectedBeer = (Beer) bundle.getSerializable("selectedBeer");
             String maltList = recoverMaltList(selectedBeer);
             String hopList = recoverHopList(selectedBeer);
-            Uri url = Uri.parse(selectedBeer.getImage_url());
-            Glide.with(BeerDetailsActivity.this).load(url).into(imageSelectedBeer);
+//            Glide.with(BeerDetailsActivity.this).load(url).into(imageSelectedBeer);
+            if(selectedBeer.getImage_url() != null) {
+                Uri url = Uri.parse(selectedBeer.getImage_url());
+                Glide.with(BeerDetailsActivity.this).load(url).into(imageSelectedBeer);
+            }
 
             textSelectedBeerName.setText(selectedBeer.getName());
             getSupportActionBar().setTitle(selectedBeer.getName());

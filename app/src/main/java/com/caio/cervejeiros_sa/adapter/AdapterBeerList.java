@@ -4,8 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,13 +15,11 @@ import com.bumptech.glide.Glide;
 import com.caio.cervejeiros_sa.R;
 import com.caio.cervejeiros_sa.model.Beer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerListViewHolder>{
 
     private List<Beer> beerList;
-    private List<Beer> filteredBeerList;
     private Context context;
     private OnBeerListener mOnBeerListener;
 
@@ -49,6 +46,20 @@ public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerLi
         holder.textBeerTagLine.setText(beer.getTagline());
         Glide.with(context).load(beer.getImage_url()).into(holder.imageBeer);
 
+        holder.buttonFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(beer.isFavorite()){
+                    holder.buttonFavorite.setImageResource(R.drawable.ic_fav_unselected_24);
+                    beer.setFavorite(false);
+                }else{
+                    holder.buttonFavorite.setImageResource(R.drawable.ic_fav_selected_24);
+                    beer.setFavorite(true);
+
+                }
+            }
+        });
+
 
     }
 
@@ -64,6 +75,7 @@ public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerLi
         TextView textBeerName;
         TextView textBeerTagLine;
         OnBeerListener onBeerListener;
+        ImageView buttonFavorite;
 
         public BeerListViewHolder(@NonNull View itemView,OnBeerListener onBeerListener) {
             super(itemView);
@@ -72,6 +84,7 @@ public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerLi
             textBeerTagLine = itemView.findViewById(R.id.textBeerTagLine);
             imageBeer = itemView.findViewById(R.id.imageBeerList);
             this.onBeerListener = onBeerListener;
+            buttonFavorite = itemView.findViewById(R.id.imageFavorite);
 
             itemView.setOnClickListener(this);
 
@@ -82,11 +95,28 @@ public class AdapterBeerList extends RecyclerView.Adapter<AdapterBeerList.BeerLi
             onBeerListener.onBeerListener(getAdapterPosition());
 
         }
+
+
     }
 
     public interface OnBeerListener{
         void onBeerListener(int position);
     }
+
+    public void add(Beer beer) {
+        beerList.add(beer);
+        notifyItemInserted(beerList.size() - 1);
+    }
+
+    public void addAll(List<Beer> beerResults) {
+        for (Beer result : beerResults) {
+            add(result);
+        }
+    }
+
+
+
+
 
 
 }
