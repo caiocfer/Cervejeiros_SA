@@ -76,8 +76,7 @@ public class HomeFragment extends Fragment implements AdapterBeerList.OnBeerList
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getContext(), "submited", Toast.LENGTH_SHORT).show();
-                return true;
+                return false;
             }
 
             @Override
